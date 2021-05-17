@@ -12,6 +12,7 @@
   "author": "Stefan Lazarevic <stefan.lazarevic.17@singimail.rs>",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^8.4.0",
     "express": "^4.17.1"
   },
   "devDependencies": {

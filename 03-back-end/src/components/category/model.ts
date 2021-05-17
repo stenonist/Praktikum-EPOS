@@ -1,10 +1,10 @@
 class CategoryModel {
     categoryId: number;
     name: string;
-    imagePath: string;
     parentCategoryId: number|null = null;
-    parentcategory: CategoryModel | null = null;
+    parentCategory: CategoryModel | null = null;
     subcategories: CategoryModel[] = [];
+    isVisible?:boolean;
 }
 
 export default CategoryModel;

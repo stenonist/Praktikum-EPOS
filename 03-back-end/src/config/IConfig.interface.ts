@@ -1,4 +1,5 @@
 export default interface IConfig{
+    database: any;
     server:{
         port: number,
         static:{
