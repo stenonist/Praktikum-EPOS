@@ -20,12 +20,25 @@ export default interface IConfig {
         charset: string,
         timezone: string,
     },
-    // Za uplad Slika
-    /* fileUpload: {
+    fileUpload: {
         maxSize: number;
         maxFiles: number;
         timeout: number;
         temporaryDirectory: string;
         uploadDestinationDirectory: string;
-    }, */
-};
+        photos: {
+            limits: {
+                minWidth: number;
+                maxWidth: number;
+                minHeight: number;
+                maxHeight: number;
+            },
+            resizes: {
+                sufix: string;
+                width: number;
+                hieght: number;
+                fit: "cover"|"contain";
+            }[],
+        },
+    },
+}

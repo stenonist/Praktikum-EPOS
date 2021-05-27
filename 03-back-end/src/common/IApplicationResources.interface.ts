@@ -1,5 +1,5 @@
 import * as mysql2 from "mysql2/promise";
-import IServices from './IServices.interface';
+import IServices from "./IService.interface";
 
 export default interface IApplicationResources {
     databaseConnection: mysql2.Connection;
