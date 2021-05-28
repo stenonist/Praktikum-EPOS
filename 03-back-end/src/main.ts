@@ -14,13 +14,16 @@ import PostService from './components/post/service';
 import UserService from "./components/user/service";
 import PostRouter from './components/post/router';
 import UserRouter from './components/user/router';
+import AdministratorRouter from './components/administrator/router';
+import AdministratorService from './components/administrator/service';
+import fileUpload = require("express-fileupload");
 
 async function main() {
     const application: express.Application = express();
 
     application.use(cors());
     application.use(express.json());
-    /* application.use(fileUpload({
+    application.use(fileUpload({
         limits: {
             fileSize: Config.fileUpload.maxSize,
             files: Config.fileUpload.maxFiles,
@@ -32,7 +35,7 @@ async function main() {
         preserveExtension: true,
         createParentPath: true,
         abortOnLimit: true,
-    })); */
+    }));
 
     const resources: IApplicationResources = {
         databaseConnection: await mysql2.createConnection({
@@ -53,6 +56,7 @@ async function main() {
         categoryService: new CategoryService(resources),
         postService: new PostService(resources),
         userService: new UserService(resources),
+        administratorService: new AdministratorService(resources),
         /* featureService:  new FeatureService(resources),
         articleService:  new ArticleService(resources), */
     };
@@ -72,9 +76,7 @@ async function main() {
         new CategoryRouter(),
         new PostRouter(),
         new UserRouter(),
-        /* new FeatureRouter(),
-        new ArticleRouter(), */
-        // ...
+        new AdministratorRouter(),
     ]);
 
     application.use((req, res) => {
