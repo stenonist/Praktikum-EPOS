@@ -69,6 +69,37 @@ const Config: IConfig = {
         fromEmail: process.env?.MAIL_FROM,
         debug: true,
     },
+    auth: {
+        user: {
+            algorithm: "RS256",
+            issuer: "localhost",
+            auth: {
+                duration: 60 * 60 * 24 * 7, // Samo dok radimo razvoj: 60 * 60 * 5
+                public: readFileSync("keystore/user-auth.public", "utf-8"),
+                private: readFileSync("keystore/user-auth.private", "utf-8"),
+            },
+            refresh: {
+                duration: 60 * 60 * 24 * 365, // Samo dok radimo razvoj: 60 * 60 * 24 * 31
+                public: readFileSync("keystore/user-refresh.public", "utf-8"),
+                private: readFileSync("keystore/user-refresh.private", "utf-8"),
+            },
+        },
+        administrator: {
+            algorithm: "RS256",
+            issuer: "localhost",
+            auth: {
+                duration: 60 * 60 * 24 * 7, // Samo dok radimo razvoj: 60 * 60 * 5
+                public: readFileSync("keystore/administrator-auth.public", "utf-8"),
+                private: readFileSync("keystore/administrator-auth.private", "utf-8"),
+            },
+            refresh: {
+                duration: 60 * 60 * 24 * 365, // Samo dok radimo razvoj: 60 * 60 * 24 * 31
+                public: readFileSync("keystore/administrator-refresh.public", "utf-8"),
+                private: readFileSync("keystore/administrator-refresh.private", "utf-8"),
+            },
+        },
+        allowRequestsEvenWithoutValidTokens: true,
+    },
 }
 
 export default Config;

@@ -5,7 +5,11 @@
         "removeComments" : true,
         "target" : "ES6",
         "sourceMap" : true,
-        "outDir" : "./dist"
+        "outDir" : "./dist",
+        "typeRoots" :[
+            "@types",
+            ".nodde_modules/@types"
+        ]
     },
     "exclude" : [
         "dist",

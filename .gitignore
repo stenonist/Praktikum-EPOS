@@ -4,3 +4,4 @@ temp/
 03-back-end/dist/
 03-back-end/static/uploads/
 03-back-end/.env
+03-back-end/keystore
