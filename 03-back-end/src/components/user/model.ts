@@ -1,11 +1,13 @@
 class UserModel {
+    userId: number;
+    createdAt: Date;
     email: string;
+    passwordHash: string;
     forename: string;
     surname: string;
     phone: string;
     address: string;
-    userType: ("regular"|"admin");
-    userStatus: ("active"|"banned"|"deleted");
+    isActive: boolean;
 }
 
 export default UserModel;
