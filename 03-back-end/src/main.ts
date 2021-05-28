@@ -11,6 +11,9 @@ import CategoryService from './components/category/service';
 //import ArticleService from './components/article/service';
 //import ArticleRouter from './components/article/router';
 import PostService from './components/post/service';
+import UserService from "./components/user/service";
+import PostRouter from './components/post/router';
+import UserRouter from './components/user/router';
 
 async function main() {
     const application: express.Application = express();
@@ -49,6 +52,7 @@ async function main() {
     resources.services = {
         categoryService: new CategoryService(resources),
         postService: new PostService(resources),
+        userService: new UserService(resources),
         /* featureService:  new FeatureService(resources),
         articleService:  new ArticleService(resources), */
     };
@@ -66,6 +70,8 @@ async function main() {
 
     Router.setupRoutes(application, resources, [
         new CategoryRouter(),
+        new PostRouter(),
+        new UserRouter(),
         /* new FeatureRouter(),
         new ArticleRouter(), */
         // ...
