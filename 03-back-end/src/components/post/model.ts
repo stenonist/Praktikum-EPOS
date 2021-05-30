@@ -9,6 +9,7 @@ class Photo implements IModel {
 
 class PostModel implements IModel {
     postId: number;
+    createdAt: Date;
     name: string;
     description: string;
     location: string;

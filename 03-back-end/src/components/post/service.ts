@@ -25,6 +25,7 @@ class PostService extends BaseService<PostModel>{
         const item: PostModel = new PostModel();
 
         item.postId = +(row?.category_id);
+        item.createdAt = new Date(row?.created_at);
         item.name = row?.name;
         item.description = row?.description;
         item.location = row?.location;
@@ -40,35 +41,20 @@ class PostService extends BaseService<PostModel>{
         }
 
         if (options.loadUser) {
-            //kao iznad pozvati iz user Service
-            /* const data = await this.getUserById(item.userId,{loadUser: true,});
-            const user: UserModel = new UserModel();
-            
-
-            user.email = data?.email;
-            user.forename = data?.forename;
-            user.surname = data?.surname;
-            user.phone = data?.phone;
-            user.address = data?.address;
-            user.userType = data?.user_type;
-            user.userStatus = data?.user_status
-
-            item.user = user; */
+            item.user = await this.services.userService.getById(item.userId);
         }
 
         return item;
     }
 
-    /* public async getAll(
-        options: Partial<PostModelAdapterOptions> = {},
-    ): Promise<CategoryModel[]|IErrorResponse>{
-        return await this.getAllByFieldNameFromTable<PostModelAdapterOptions>(
+    public async getAll(
+        options: Partial<PostModelAdapterOptions> = { },
+    ): Promise<PostModel[]|IErrorResponse> {
+        return await this.getAllFromTable<PostModelAdapterOptions>(
             'post',
-            'parent_category_id',
-            null,
             options,
         );
-    } */
+    }
 
     private async getAllPhotosByPostId(postId: number): Promise<PostPhoto[]> {
         const sql = `SELECT photo_id, image_path FROM photo WHERE post_id = ?;`;
