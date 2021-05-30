@@ -3,7 +3,7 @@ import * as mysql2 from 'mysql2/promise';
 import IModelAdapterOptions from './IModelAdapterOptions.interface';
 import IErrorResponse from './IErrorResponse.interface';
 import IApplicationResources from './IApplicationResources.interface';
-import IServices from './IServices.interface';
+import IService from './IService.interface';
 
 export default abstract class BaseService<ReturnModel extends IModel> {
     private resources: IApplicationResources;
@@ -16,7 +16,7 @@ export default abstract class BaseService<ReturnModel extends IModel> {
         return this.resources.databaseConnection;
     }
 
-    protected get services(): IServices {
+    protected get services(): IService {
         return this.resources.services;
     }
 

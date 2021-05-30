@@ -25,8 +25,8 @@ const IEditPostValidator = ajv.compile({
         },
         location: {
             type: "string",
-            minLenght: 2,
-            maxLenght: 64,
+            minLength: 2,
+            maxLength: 64,
         },
         isActive: {
             type: "boolean",

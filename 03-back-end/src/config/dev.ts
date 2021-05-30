@@ -21,7 +21,7 @@ const Config: IConfig = {
         port: 3306,
         user: "root",
         password: "root",
-        database: "test",
+        database: "testdb",
         charset: "utf8",
         timezone: "+01:00",
     },

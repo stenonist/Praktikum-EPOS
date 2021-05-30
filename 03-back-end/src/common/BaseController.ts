@@ -1,5 +1,5 @@
 import IApplicationResources from './IApplicationResources.interface';
-import IServices from './IServices.interface';
+import IService from './IService.interface';
 
 export default abstract class BaseController {
     private resources: IApplicationResources;
@@ -8,7 +8,7 @@ export default abstract class BaseController {
         this.resources = resources;
     }
 
-    protected get services(): IServices {
+    protected get services(): IService {
         return this.resources.services;
     }
 }
