@@ -5,23 +5,24 @@ import CategoryRouter from './components/category/router';
 import * as mysql2 from "mysql2/promise";
 import IApplicationResources from './common/IApplicationResources.interface';
 import Router from './router';
-//import FeatureRouter from './components/feature/router';
 import CategoryService from './components/category/service';
-//import FeatureService from './components/feature/service';
-//import ArticleService from './components/article/service';
-//import ArticleRouter from './components/article/router';
 import PostService from './components/post/service';
 import UserService from "./components/user/service";
 import PostRouter from './components/post/router';
 import UserRouter from './components/user/router';
 import AdministratorRouter from './components/administrator/router';
 import AdministratorService from './components/administrator/service';
-import fileUpload = require("express-fileupload");
+import * as fileUpload from "express-fileupload";
+import AuthRouter from "./components/auth/router";
 
 async function main() {
     const application: express.Application = express();
 
     application.use(cors());
+    /* application.use(cors({
+        origin: "http://localhost:3000",
+        credential: true,
+    })); */
     application.use(express.json());
     application.use(fileUpload({
         limits: {
@@ -77,6 +78,7 @@ async function main() {
         new PostRouter(),
         new UserRouter(),
         new AdministratorRouter(),
+        new AuthRouter(),
     ]);
 
     application.use((req, res) => {

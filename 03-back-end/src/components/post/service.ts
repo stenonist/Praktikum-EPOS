@@ -2,13 +2,12 @@ import IModelAdapterOptions from "../../common/IModelAdapterOptions.interface";
 import BaseService from '../../common/BaseService';
 import PostModel, { PostPhoto } from "./model";
 import CategoryModel from "../category/model";
-import UserModel from '../user/model';
 import IErrorResponse from "../../common/IErrorResponse.interface";
 import { IAddPost, IUploadedPhoto } from './dto/IAddPost';
 import { IEditPost } from "./dto/IEditPost";
 import * as fs from "fs";
 import Config from "../../config/dev";
-import path = require("path");
+import * as path from 'path';
 
 class PostModelAdapterOptions implements IModelAdapterOptions{
     loadCategory: boolean = false;
@@ -24,7 +23,7 @@ class PostService extends BaseService<PostModel>{
     ): Promise<PostModel> {
         const item: PostModel = new PostModel();
 
-        item.postId = +(row?.category_id);
+        item.postId = +(row?.post_id);
         item.createdAt = new Date(row?.created_at);
         item.name = row?.name;
         item.description = row?.description;
@@ -48,12 +47,40 @@ class PostService extends BaseService<PostModel>{
     }
 
     public async getAll(
-        options: Partial<PostModelAdapterOptions> = { },
+        options: Partial<PostModelAdapterOptions> = { loadPhotos:true },
     ): Promise<PostModel[]|IErrorResponse> {
         return await this.getAllFromTable<PostModelAdapterOptions>(
             'post',
             options,
         );
+    }
+
+    public async getAllPostByUserId(userId: number): Promise<PostModel[]>{
+        const sql = `SELECT post_id FROM post WHERE user_id = ?;`;
+        const [ rows ] = await this.db.execute(sql, [ userId ]);
+
+        if (!Array.isArray(rows) || rows.length === 0) {
+            return;
+        }
+
+        const idArr=[];
+        rows.map(row=>{
+            idArr.push(row?.post_id)
+        })
+        
+        return await this.getPosts(idArr);
+    }
+
+    private async getPosts(idArr:number[]){
+        let PostArr = [];
+        for (let id of idArr) {
+            try {
+                PostArr.push(await this.getById(id,{loadPhotos: true}));
+            } catch(e) {
+                
+            }
+        }
+        return PostArr; 
     }
 
     private async getAllPhotosByPostId(postId: number): Promise<PostPhoto[]> {
@@ -76,23 +103,12 @@ class PostService extends BaseService<PostModel>{
         postId: number,
         options: Partial<PostModelAdapterOptions> = {},
     ): Promise<PostModel|IErrorResponse|null> {
-        return this.getByIdFromTable(
+        return await this.getByIdFromTable(
             "post",
             postId,
             options,
         );
     }
-
-    /* public async getUserById(
-        postId: number,
-        options: Partial<PostModelAdapterOptions> = {},
-    ): Promise<PostModel|IErrorResponse|null> {
-        return this.getByIdFromTable(
-            "post",
-            postId,
-            options,
-        );
-    } */
 
     //Add
     public async add(
@@ -146,7 +162,6 @@ class PostService extends BaseService<PostModel>{
                                 loadCategory: true,
                                 loadUser: true,
                                 loadPhotos: true,
-                                // loadPrices: true,
                             }
                         ));
                     })
@@ -419,7 +434,6 @@ class PostService extends BaseService<PostModel>{
                                 {
                                     loadCategory: true,
                                     loadPhotos: true,
-                                    // loadPrices: true,
                                 }
                             ));
                         })

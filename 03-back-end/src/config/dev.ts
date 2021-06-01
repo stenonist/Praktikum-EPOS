@@ -3,6 +3,10 @@ import IConfig from "../common/IConfig.interface";
 import * as dotenv from "dotenv";
 import { readFileSync } from "fs";
 
+const dotEnvResult = dotenv.config();
+
+if (dotEnvResult.error) throw "Environment configuration file error: " + dotEnvResult.error;
+
 const Config: IConfig = {
     server:{
         port: 40080,
@@ -98,6 +102,7 @@ const Config: IConfig = {
                 private: readFileSync("keystore/administrator-refresh.private", "utf-8"),
             },
         },
+        // turn token on and off
         allowRequestsEvenWithoutValidTokens: true,
     },
 }

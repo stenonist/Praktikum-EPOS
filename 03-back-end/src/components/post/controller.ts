@@ -35,6 +35,26 @@ class PostController extends BaseController{
         res.send(item);
     }
 
+    public async getAll(req: Request, res: Response) {
+
+        const item = await this.services.postService.getAll();
+
+        res.send(item);
+    }
+
+    public async getAllByUserId(req: Request, res: Response) {
+        const id: number = +(req.params?.id);
+
+        if (id <= 0) {
+            res.sendStatus(400);
+            return;
+        }
+
+        const item = await this.services.postService.getAllPostByUserId(id);
+
+        res.send(item);
+    }
+
     private isPhotoValid(file: UploadedFile): { isOk: boolean; message?: string } {
         try {
             const size = sizeOf(file.tempFilePath);

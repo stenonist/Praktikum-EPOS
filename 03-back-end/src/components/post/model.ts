@@ -13,7 +13,7 @@ class PostModel implements IModel {
     name: string;
     description: string;
     location: string;
-    photos: Photo[] = [];
+    photos?: Photo[] = [];
     categoryId: number;
     category?: CategoryModel;
     userId: number;

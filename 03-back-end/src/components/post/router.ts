@@ -9,7 +9,9 @@ export default class PostRouter implements IRouter {
         const postController = new PostController(resources);
 
         // Routing:
+        application.get('/user/:id/post',    postController.getAllByUserId.bind(postController));
         application.get('/post/:id',    postController.getById.bind(postController));
+        application.get('/posts',    postController.getAll.bind(postController));
         application.post('/post',       postController.add.bind(postController));
         application.put('/post/:id',    postController.edit.bind(postController));
         application.delete('/post/:id', postController.delete.bind(postController));

@@ -1,4 +1,6 @@
-class UserModel {
+import IModel from "../../common/IModel.interface";
+
+export default class UserModel implements IModel {
     userId: number;
     createdAt: Date;
     email: string;
@@ -9,5 +11,3 @@ class UserModel {
     address: string;
     isActive: boolean;
 }
-
-export default UserModel;
