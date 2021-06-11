@@ -154,7 +154,7 @@ export default class CategoryDashboardAdd extends BasePage<{}> {
         });
     }
 
-    private onChangeInput(field: "name" | "imagePath"): (event: React.ChangeEvent<HTMLInputElement>) => void {
+    private onChangeInput(field: "name"): (event: React.ChangeEvent<HTMLInputElement>) => void {
         return (event: React.ChangeEvent<HTMLInputElement>) => {
             this.setState({
                 [field]: event.target.value,

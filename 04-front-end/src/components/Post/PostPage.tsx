@@ -89,74 +89,15 @@ export default class PostPage extends BasePage<PostPageProperties> {
                                         <Col key={ "post-photo-" + photo.photoId }
                                              xs={12} sm={6} md={4} lg={3} className="mt-3">
                                             <Card.Img variant="top"
-                                                src={ this.getThumbPath(AppConfiguration.API_URL + "/" + photo.imagePath) } />
+                                                src={ PostService.getThumbPath(AppConfiguration.API_URL + "/" + photo.imagePath) } />
                                         </Col>
                                     ))
                                 }
                             </Row>
 
                             <Card.Body>
-                                <Card.Text as="div">
-                                    <Row>
-                                        <Col xs={ 12 } md={ 8 }>
-                                            { post.description }
-                                        </Col>
-                                        <Col xs={ 12 } md={ 4 }>
-                                            
-                                        </Col>
-                                    </Row>
-                                </Card.Text>
                                 <Card.Text as="div" className="post-page-description">
                                     { post.description }
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-                    <Col xs={ 12 } md={ 4 }>
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>
-                                    {/* <b>Features</b> (list style) */}
-                                </Card.Title>
-                                <Card.Text as="div">
-                                    {/* <ul>
-                                        {
-                                            post.features.map(af => (
-                                                <li key={ "post-feature-value-" + af.featureId }>
-                                                    <b>{ af.name }</b>: { af.value }
-                                                </li>
-                                            ))
-                                        }
-                                    </ul> */}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-
-                        <Card className="mt-3">
-                            <Card.Body>
-                                <Card.Title>
-                                    {/* <b>Features</b> (table style) */}
-                                </Card.Title>
-                                <Card.Text as="div">
-                                    {/* <table className="table table-hover table-sm">
-                                        <tr>
-                                            <th>Feature</th>
-                                            <th>Value</th>
-                                        </tr>
-                                        {
-                                            post.features.map(af => (
-                                                <tr key={ "table-post-feature-value-" + af.featureId }>
-                                                    <th>
-                                                        { af.name }
-                                                    </th>
-                                                    <td>
-                                                        { af.value }
-                                                    </td>
-                                                </tr>
-                                            ))
-                                        }
-                                    </table> */}
                                 </Card.Text>
                             </Card.Body>
                         </Card>

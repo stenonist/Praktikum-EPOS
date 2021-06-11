@@ -44,6 +44,10 @@ const IAddPostValidator = ajv.compile({
             type: "integer",
             minimum: 1,
         },
+        userId: {
+            type: "integer",
+            minimum: 1,
+        },
     },
     required: [
         "name",
@@ -52,6 +56,7 @@ const IAddPostValidator = ajv.compile({
         "isActive",
         "isPromoted",
         "categoryId",
+        "userId",
     ],
     additionalProperties: false,
 });

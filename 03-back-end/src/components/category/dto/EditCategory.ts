@@ -15,6 +15,10 @@ const IEditCategoryValidator = ajv.compile({
             minLength: 2,
             maxLength: 128,
         },
+        parentCategoryId: {
+            type: [ "integer", "null" ],
+            minimum: 1,
+        },
         imagePath: {
             type: "string",
             maxLength: 255,
@@ -23,7 +27,6 @@ const IEditCategoryValidator = ajv.compile({
     },
     required: [
         "name",
-        "imagePath",
     ],
     additionalProperties: false,
 });

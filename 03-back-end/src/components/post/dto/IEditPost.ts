@@ -40,7 +40,7 @@ const IEditPostValidator = ajv.compile({
         "description",
         "location",
         "isActive",
-        "isPromoted",
+        "isPromoted"
     ],
     additionalProperties: false,
 });

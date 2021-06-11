@@ -20,10 +20,14 @@ const IAddCategoryValidator = ajv.compile({
             type: [ "integer", "null" ],
             minimum: 1,
         },
+        imagePath: {
+            type: [ "string", "null" ],
+            maxLength: 255,
+            pattern: "\.(png|jpg)$",
+        },
     },
     required: [
         "name",
-        "imagePath",
     ],
     additionalProperties: false,
 });

@@ -127,7 +127,8 @@ class PostService extends BaseService<PostModel>{
                         location    = ?,
                         is_active   = ?,
                         is_promoted = ?,
-                        category_id = ?;
+                        category_id = ?,
+                        user_id     = ?;
                     `,
                     [
                         data.name,
@@ -136,6 +137,7 @@ class PostService extends BaseService<PostModel>{
                         data.isActive ? 1 : 0,
                         data.isPromoted ? 1 : 0,
                         data.categoryId,
+                        data.userId,
                     ]
                 )
                 .then(async (res: any) => {
@@ -146,8 +148,8 @@ class PostService extends BaseService<PostModel>{
                     for (const uploadedPhoto of uploadedPhotos) {
                         promises.push(
                             this.db.execute(
-                                `INSERT photo SET post_id = ?, image_path = ?;`,
-                                [ newPostId, uploadedPhoto.imagePath, ]
+                                `INSERT photo SET image_path = ?,post_id = ?;`,
+                                [ uploadedPhoto.imagePath, newPostId, ]
                             ),
                         );
                     }
@@ -197,8 +199,7 @@ class PostService extends BaseService<PostModel>{
                 description = ?,
                 location    = ?,
                 is_active   = ?,
-                is_promoted = ?,
-                category_id = ?;
+                is_promoted = ?
             WHERE
                 post_id = ?;`,
             [
@@ -262,6 +263,14 @@ class PostService extends BaseService<PostModel>{
                     });
                 });
         });
+    }
+
+    public async deleteAllPostByUserId(userId: number): Promise<IErrorResponse|null>{
+        const posts = await this.getAllPostByUserId(userId);
+        posts.forEach(post => {
+            this.delete(post.postId);
+        });
+        return ;
     }
 
     public async delete(postId: number): Promise<IErrorResponse|null> {
@@ -374,7 +383,7 @@ class PostService extends BaseService<PostModel>{
             }
 
             const filteredPhotos = (post as PostModel).photos.filter(p => p.photoId === photoId);
-
+            
             if (filteredPhotos.length === 0) {
                 return resolve(null);
             }
@@ -438,6 +447,8 @@ class PostService extends BaseService<PostModel>{
                             ));
                         })
                         .catch(async error => {
+                            console.log("ovde puca");
+                            
                             await this.db.rollback();
 
                             resolve({
@@ -455,6 +466,12 @@ class PostService extends BaseService<PostModel>{
                     });
                 })
         })
+    }
+
+    public async getAllByCategoryId(categoryId: number): Promise<PostModel[]> {
+        return await this.getAllByFieldNameFromTable<PostModelAdapterOptions>("post", "category_id", categoryId, {
+            loadPhotos: true,
+        }) as PostModel[];
     }
 
 }

@@ -1,6 +1,7 @@
 import { Application } from 'express';
 import IApplicationResources from '../../common/IApplicationResources.interface';
 import IRouter from '../../common/IRouter.interface';
+import AuthMiddleware from '../../middleware/auth.middleware';
 import PostController from './controller';
 
 export default class PostRouter implements IRouter {
@@ -11,7 +12,8 @@ export default class PostRouter implements IRouter {
         // Routing:
         application.get('/user/:id/post',    postController.getAllByUserId.bind(postController));
         application.get('/post/:id',    postController.getById.bind(postController));
-        application.get('/posts',    postController.getAll.bind(postController));
+        application.get('/all-posts',    postController.getAll.bind(postController));
+        application.get("/category/:id/post",postController.getAllByCategoryId.bind(postController));
         application.post('/post',       postController.add.bind(postController));
         application.put('/post/:id',    postController.edit.bind(postController));
         application.delete('/post/:id', postController.delete.bind(postController));

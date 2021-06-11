@@ -90,6 +90,48 @@ class CategoryController extends BaseController {
 
         res.send(result);
     }
+    async disable(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+
+        const categoryId: number = +id;
+
+        if (categoryId <= 0) {
+            res.status(400).send("Invalid ID number.");
+            return;
+        }
+
+        const result = await this.services.categoryService.disable(
+            categoryId
+        );
+
+        if (result === null) {
+            res.sendStatus(404);
+            return;
+        }
+
+        res.send(result);
+    }
+    async enable(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+
+        const categoryId: number = +id;
+
+        if (categoryId <= 0) {
+            res.status(400).send("Invalid ID number.");
+            return;
+        }
+
+        const result = await this.services.categoryService.enable(
+            categoryId
+        );
+
+        if (result === null) {
+            res.sendStatus(404);
+            return;
+        }
+
+        res.send(result);
+    }
 
     async deleteById(req: Request, res: Response, next: NextFunction) {
         const id: string = req.params.id;

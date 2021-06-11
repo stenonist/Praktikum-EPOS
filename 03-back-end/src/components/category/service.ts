@@ -125,12 +125,82 @@ class CategoryService extends BaseService<CategoryModel> {
                 UPDATE
                     category
                 SET
-                    name = ?,
-                    
+                    name = ?
                 WHERE
                     category_id = ?;`;
 
             this.db.execute(sql, [ data.name, categoryId ])
+                .then(async result => {
+                    resolve(await this.getById(categoryId, options));
+                })
+                .catch(error => {
+                    resolve({
+                        errorCode: error?.errno,
+                        errorMessage: error?.sqlMessage
+                    });
+                });
+        });
+    }
+
+    public async disable(
+        categoryId: number,
+        options: Partial<CategoryModelAdapterOptions> = { },
+    ): Promise<CategoryModel|IErrorResponse|null> {
+        const result = await this.getById(categoryId);
+
+        if (result === null) {
+            return null;
+        }
+
+        if (!(result instanceof CategoryModel)) {
+            return result;
+        }
+
+        return new Promise<CategoryModel|IErrorResponse>(async resolve => {
+            const sql = `
+                UPDATE
+                    category
+                SET
+                    isVisible = 0
+                WHERE
+                    category_id = ?;`;
+
+            this.db.execute(sql, [ categoryId ])
+                .then(async result => {
+                    resolve(await this.getById(categoryId, options));
+                })
+                .catch(error => {
+                    resolve({
+                        errorCode: error?.errno,
+                        errorMessage: error?.sqlMessage
+                    });
+                });
+        });
+    }
+    public async enable(
+        categoryId: number,
+        options: Partial<CategoryModelAdapterOptions> = { },
+    ): Promise<CategoryModel|IErrorResponse|null> {
+        const result = await this.getById(categoryId);
+
+        if (result === null) {
+            return null;
+        }
+
+        if (!(result instanceof CategoryModel)) {
+            return result;
+        }
+
+        return new Promise<CategoryModel|IErrorResponse>(async resolve => {
+            const sql = `
+                UPDATE
+                    category
+                SET
+                    isVisible = 1
+                WHERE
+                    category_id = ?;`;
+
+            this.db.execute(sql, [ categoryId ])
                 .then(async result => {
                     resolve(await this.getById(categoryId, options));
                 })

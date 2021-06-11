@@ -5,6 +5,7 @@ import { IAddUser } from './dto/IAddUser';
 import IErrorResponse from '../../common/IErrorResponse.interface';
 import * as bcrypt from "bcrypt";
 import { IEditUser } from './dto/IEditUser';
+import PostService from '../../../../04-front-end/src/services/PostService';
 
 class UserModelAdapterOptions implements IModelAdapterOptions {
     //for future update
@@ -138,6 +139,13 @@ class UserService extends BaseService<UserModel> {
     }
 
     public async delete(userId: number): Promise<IErrorResponse> {
+        const posts = await PostService.getPostsByUserId(userId);
+
+        /* posts.forEach(async post => {
+            await PostService.delete(post.postId);
+        }); */
+
+
         return new Promise<IErrorResponse>(async resolve => {
             this.db.execute(
                 `DELETE FROM user WHERE user_id = ?;`,
