@@ -9,7 +9,7 @@
         "typeRoots" :[
             "@types",
             ".nodde_modules/@types"
-        ]
+        ],
     },
     "exclude" : [
         "dist",

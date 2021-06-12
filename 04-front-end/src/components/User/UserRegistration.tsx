@@ -8,8 +8,8 @@ class UserRegistrationState {
     password: string = "";
     forename: string = "";
     surname: string = "";
-    phoneNumber: string = "";
-    postalAddress: string = "";
+    phone: string = "";
+    address: string = "";
 
     message: string = "";
     isRegistered: boolean = false;
@@ -26,8 +26,8 @@ export default class UserRegistration extends BasePage<{}> {
             password: "",
             forename: "",
             surname: "",
-            phoneNumber: "",
-            postalAddress: "",
+            phone: "",
+            address: "",
 
             message: "",
             isRegistered: false,
@@ -106,8 +106,8 @@ export default class UserRegistration extends BasePage<{}> {
                                                 <Form.Control as="textarea"
                                                     rows={3}
                                                     placeholder="Enter your adress here..."
-                                                    value={ this.state.postalAddress }
-                                                    onChange={ this.onChangeInput("postalAddress") }
+                                                    value={ this.state.address }
+                                                    onChange={ this.onChangeInput("address") }
                                                 />
                                             </Form.Group>
                                         </Col>
@@ -118,8 +118,8 @@ export default class UserRegistration extends BasePage<{}> {
                                                 <Form.Control
                                                     type="tel"
                                                     placeholder="Enter your phone number here..."
-                                                    value={ this.state.phoneNumber }
-                                                    onChange={ this.onChangeInput("phoneNumber") }
+                                                    value={ this.state.phone }
+                                                    onChange={ this.onChangeInput("phone") }
                                                 />
                                             </Form.Group>
 
@@ -152,8 +152,8 @@ export default class UserRegistration extends BasePage<{}> {
             password: this.state.password,
             forename: this.state.forename,
             surname: this.state.surname,
-            postalAddress: this.state.postalAddress,
-            phoneNumber: this.state.phoneNumber,
+            address: this.state.address,
+            phone: this.state.phone,
         })
         .then(res => {
             if (res.success) {
@@ -170,7 +170,7 @@ export default class UserRegistration extends BasePage<{}> {
         });
     }
 
-    private onChangeInput(field: "email" | "password" | "forename" | "surname" | "phoneNumber" | "postalAddress"): (event: React.ChangeEvent<HTMLInputElement>) => void {
+    private onChangeInput(field: "email" | "password" | "forename" | "surname" | "phone" | "address"): (event: React.ChangeEvent<HTMLInputElement>) => void {
         return (event: React.ChangeEvent<HTMLInputElement>) => {
             this.setState({
                 [field]: event.target.value,

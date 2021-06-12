@@ -93,7 +93,7 @@ export default class Application extends React.Component {
                          return ( <CategoryPage {...props} /> );
                        }
                      } />
-              <Route path="/article/:aid" component={ PostPage } />
+              <Route path="/post/:pid" component={ PostPage } />
   
               <Route path="/contact">
                 <ContactPage
