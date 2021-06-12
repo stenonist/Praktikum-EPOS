@@ -1,0 +1,776 @@
+{
+	"info": {
+		"_postman_id": "488ad1d2-4da8-4010-8200-286110bf8416",
+		"name": "Test svih ruta za Back-end deo projekta EPOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "GET all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/category",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a single category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/category/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test category second\",\r\n    \"parentCategoryId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/category",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT to edit an existing category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nova test kategorija\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/category/2",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT disable a category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API-URL}}/category-disable/2",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category-disable",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT enable a category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/category-enable/2",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category-enable",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE a category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/category/3",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Administrator",
+			"item": [
+				{
+					"name": "GET all administrators",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/administrator",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"administrator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a single administrator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/administrator/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"administrator",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new administrator",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"stefanlaz\",\r\n    \"password\": \"Sifra123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/administrator",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"administrator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT new data for an existing admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"sifra123\",\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/administrator/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"administrator",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE an administrator",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/administrator/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"administrator",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/user",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a single user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/user/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mtair@singidunum.ac.rs\",\r\n    \"password\": \"test123456\",\r\n    \"forename\": \"Milan\",\r\n    \"surname\": \"Tair\",\r\n    \"phone\": \"+381113093267\",\r\n    \"address\": \"Danijelova 32, 11010 beograd, R. Srbija\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/user",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT new data for a user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"stefan@singidunum.ac.rs\",\r\n    \"password\": \"test123456\",\r\n    \"forename\": \"Stefan\",\r\n    \"surname\": \"Lazarevic\",\r\n    \"phone\": \"+381113093265\",\r\n    \"address\": \"Danijelova 32, 11010 Beograd, Srbija\",\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/user/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE a user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/user/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new user registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"pperic@example.com\",\r\n    \"password\": \"test123456\",\r\n    \"forename\": \"Pera\",\r\n    \"surname\": \"Peric\",\r\n    \"phone\": \"+381113093222\",\r\n    \"address\": \"Danijelova 32, 11010 beograd, R. Srbija\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/auth/user/register",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "POST a new login request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"stefan@singidunum.ac.rs\",\r\n    \"password\": \"test123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-URL}}/auth/user/login",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"auth",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST a new token refresh request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWRlbnRpdHkiOiJzdGVmYW5Ac2luZ2lkdW51bS5hYy5ycyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjIzNDMxMzQ3LCJleHAiOjE2NTQ5NjczNDcsImlzcyI6ImxvY2FsaG9zdCJ9.s5zDCPu02dT3i5aGI_OjJoWHXUG52URCrfx507d-1-jLlAojiqaS1BUNlBJPNcgNKzxqMANp-9aGUsqe63csZ4wW9t78tAm1HDibKPBTcqcHBw5XBHBpQ_TwY3Q3KGvLJXGquH0TpyN2CyQCay5z1L7OLCnk-MRdMAlm7CspTN2NKzsIhqid1_Rx74G35yhbDoGS4J_fAL69yUAI4diL-auau3alMOkdzfMChaqO9Crkc7WL0sRodmTKbsA27GwyRlvxC_aZEBnSppCyBccuiUB8Gwd93g_L4eP7cJaQktx_TDzZvuiwcW4i7M9ogyUs2nWRFkqNlSlDnvC5PJhfiA\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-URL}}/auth/user/refresh",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"auth",
+										"user",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET an OK message",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/auth/user/ok",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"auth",
+										"user",
+										"ok"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Administrator",
+					"item": [
+						{
+							"name": "POST a new login request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"stefanlaz\",\r\n    \"password\": \"Sifra123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-URL}}/auth/administrator/login",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"auth",
+										"administrator",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "GET a single post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/post/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all user posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/user/1/post",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/all-posts",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"all-posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all posts in a category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/category/1/post",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"category",
+								"1",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"name\": \"Probni\",\n    \"description\": \"KratakOpis\",\n    \"location\": \"Beograd, SRB\",\n    \"categoryId\": 2,\n    \"isActive\": true,\n    \"isPromoted\": false,\n    \"userId\": 2\n}",
+									"type": "text"
+								},
+								{
+									"key": "photo1",
+									"type": "file",
+									"src": "/C:/Users/Stefan/Desktop/ui.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API-URL}}/post",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT to edit an existing post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Novi post1\",\r\n    \"description\": \"Neka ovo na primer bude duzi opis1\",\r\n    \"location\": \"Novi Sad\",\r\n    \"isActive\": true,\r\n    \"isPromoted\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API-URL}}/post/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE an existing post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/post/1",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE a single photo of a post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/post/2/photo/3",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"post",
+								"2",
+								"photo",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST new photos to a post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWRlbnRpdHkiOiJzdGVmYW5AZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTYyMzQyNDk4NCwiZXhwIjoxNjI0MDI5Nzg0LCJpc3MiOiJsb2NhbGhvc3QifQ.q-eCphY_2ke6KSX1HKP4h6eWJ7qwddTx53eNcsRJcH1cijLUhjzzpoZDk7OC9DQaoh5OnoelAhWTxqP45gE9mL1B1N-yIbMb_Uy4YNrfut7u5CzL-QIQG99eKWmspkJ-Eqkya53LW2PjP9aX5A3hinfatUeARoapafXMxfdJ1ICighDY2ZXQrKWdqqiw_skd9PXD6sNQl8gaA8lovb7FqV4kmpbvtlyvgzEWalewWb9PfTsQosEjCsbZzvGsyuGtzLS-cnSXb1s1Q2UULGKq_4ymjAwS0CebFoWoxu71jhKdw1tIgI4VgDTzNwgPVw8IOVN78ykBVYS1bTudy6YV-A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "slika",
+									"type": "file",
+									"src": "/C:/Users/Stefan/Desktop/ui.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API-URL}}/post/2/photo",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"post",
+								"2",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API-URL",
+			"value": "http://localhost:40080"
+		},
+		{
+			"key": "API-USER-AUTH-TOKEN",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWRlbnRpdHkiOiJzdGVmYW5Ac2luZ2lkdW51bS5hYy5ycyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjIzNDMxMzQ3LCJleHAiOjE2MjQwMzYxNDcsImlzcyI6ImxvY2FsaG9zdCJ9.m4_leafOyyJrwzYymQfPZl59hcEgYGiXJN8EY4bNbCl21r2BbpI3MuUauIkEhj_8NzL_9IzAg5LT_gy3TY0fBWqjB8yzn9-xlFqYLITNlaXN8VBPzJ4-bKfavJ4FbGFOb4I4bycWtGQnhu3pKD5jTYCVjk92vqa04gubLAKZs89i7lYgXgkojdmoNdspcU9rEqbyeyKaMQxpNeWBgswIMMMqriDtKvR5pL0ECsYLaB3GVyyxBqcN5yrFJtEdXxgDQ53AMFSdfzQaXJaQdPDXFMJxiNVyhh8sTOQsBfBO_M0R6f9YTxss6M9I1ENb9PZF9iCNvzcsNM6PQ0RyxKSeQw"
+		},
+		{
+			"key": "API-ADMIN-AUTH-TOKEN",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWRlbnRpdHkiOiJzdGVmYW5sYXoiLCJyb2xlIjoiYWRtaW5pc3RyYXRvciIsImlhdCI6MTYyMzQzMjQ1MywiZXhwIjoxNjI0MDM3MjUzLCJpc3MiOiJsb2NhbGhvc3QifQ.A5xfmTxVzxVU_Ou3eTqVcz3SAFEhLUs66oODwM0BJmzjTlT0JUnfDqtMSYO8jTzo9hLThjiwFDlyYpX9VqzXUU8pqUXRUdYKi2fKWeRcfw42ZM3u2_NWlJZ3OMO5SPdOiplbrz6Y61yTqPWAn7iDZiVBXHRqkfFeq9rUkRCxbeDtinFJXxkp1SEJEKLRqFKoe16iiheLt_lnirD7D3l7l1jfTFLu2K3mq9W28pcZq7gtFxT1ejLvZ-Tfaw9TBPOm_LozqrGWRJRbFU8S0T0bB8HseJjC3YlxSUEUVaztPrsQYcYOFecB2QtpWI2woWjYOSob2yPu1QudqQyIXpC7-A"
+		}
+	]
+}
