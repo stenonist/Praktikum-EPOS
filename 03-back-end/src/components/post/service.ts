@@ -438,7 +438,7 @@ class PostService extends BaseService<PostModel>{
                         .then(async () => {
                             await this.db.commit();
 
-                            resolve(await this.services.postService.getById(
+                            resolve(await this.getById(
                                 postId,
                                 {
                                     loadCategory: true,
@@ -447,13 +447,11 @@ class PostService extends BaseService<PostModel>{
                             ));
                         })
                         .catch(async error => {
-                            console.log("ovde puca");
-                            
                             await this.db.rollback();
 
                             resolve({
                                 errorCode: error?.errno,
-                                errorMessage: error?.sqlMessage
+                                errorMessage: "rollback resolve "+error?.sqlMessage
                             });
                         });
                 })
@@ -462,7 +460,7 @@ class PostService extends BaseService<PostModel>{
 
                     resolve({
                         errorCode: error?.errno,
-                        errorMessage: error?.sqlMessage
+                        errorMessage: "Last resolve "+error?.sqlMessage
                     });
                 })
         })
