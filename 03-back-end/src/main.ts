@@ -18,11 +18,13 @@ import AuthRouter from "./components/auth/router";
 async function main() {
     const application: express.Application = express();
 
-    application.use(cors());
-    /* application.use(cors({
-        origin: "http://localhost:3000",
-        credential: true,
-    })); */
+    var corsOptions = {
+        origin: 'http://localhost:3000',
+        credentials : true
+    }
+      
+    application.use(cors(corsOptions));
+    
     application.use(express.json());
     application.use(fileUpload({
         limits: {
@@ -58,8 +60,6 @@ async function main() {
         postService: new PostService(resources),
         userService: new UserService(resources),
         administratorService: new AdministratorService(resources),
-        /* featureService:  new FeatureService(resources),
-        articleService:  new ArticleService(resources), */
     };
 
     application.use(
