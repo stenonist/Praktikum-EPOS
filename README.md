@@ -13,5 +13,5 @@ Ovde se nalazi projekat za predmeta Praktikum - Internet i veb tehnologije - 202
 
 ## Kako se pokreće aplikacija
 
-1. Podigne se baza podataka iy SQL dump datoteke sa linka [02-resources/aplikacija.sql](./02-resources/aplikacija.sql)
+1. Podigne se baza podataka iz SQL dump datoteke sa linka [02-resources/aplikacija.sql](./02-resources/aplikacija.sql)
 2. Pokrene se...
