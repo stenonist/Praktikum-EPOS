@@ -17,3 +17,6 @@ Aplikacija treba da omogući korisniku da postavi svoju ilustraciju. Korisnik mo
 ## Razrada projektne dokumentacije
 
 - [Model podataka](./Database-model.md)
+- [sql dump](../02-resources/aplikacija.sql)
+- [Postman kolekcija](../02-resources/Test_svih_ruta_Back-end_dela_projekta.postman_collection.json)
+- [Detalji baze podataka](./databaseTables)
