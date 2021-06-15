@@ -14,4 +14,4 @@ Ovde se nalazi projekat za predmeta Praktikum - Internet i veb tehnologije - 202
 ## Kako se pokreće aplikacija
 
 1. Podigne se baza podataka iz SQL dump datoteke sa linka [02-resources/aplikacija.sql](./02-resources/aplikacija.sql)
-2. Pokrene se...
+2. Iz root direktorijuma splitovati terminal na dva dela. U jednom ici u direktoriju "03-back-end" i pokrenuti back-end deo, a u drugom u "04-front-end" direktoriju i pokrenuti front end deo aplikacije.
