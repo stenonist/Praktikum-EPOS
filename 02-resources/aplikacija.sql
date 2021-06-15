@@ -22,11 +22,12 @@ CREATE TABLE IF NOT EXISTS `administrator` (
   `administrator_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(64) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `is_active` tinyint(1) DEFAULT 1,
-  PRIMARY KEY (`administrator_id`)
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT 1,
+  PRIMARY KEY (`administrator_id`),
+  UNIQUE KEY `uq_administrator_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table testdb.administrator: ~1 rows (approximately)
+-- Dumping data for table testdb.administrator: ~0 rows (approximately)
 /*!40000 ALTER TABLE `administrator` DISABLE KEYS */;
 INSERT INTO `administrator` (`administrator_id`, `username`, `password_hash`, `is_active`) VALUES
 	(2, 'stefanlaz', '$2b$11$P.1HY.LOHp2/ED0UyhxIrOTx4esU5CkLkVLRPB0BBdjU5UzMgohLa', 1);
@@ -61,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
   CONSTRAINT `fk_image_post_id` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table testdb.photo: ~1 rows (approximately)
+-- Dumping data for table testdb.photo: ~0 rows (approximately)
 /*!40000 ALTER TABLE `photo` DISABLE KEYS */;
 INSERT INTO `photo` (`photo_id`, `image_path`, `post_id`) VALUES
 	(5, 'static/uploads/2021/06/dc1e3cf9-e213-43fa-8791-058d1df3543a-ui.jpg', 2);
@@ -108,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `uq_user_phone` (`phone`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table testdb.user: ~4 rows (approximately)
+-- Dumping data for table testdb.user: ~3 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`user_id`, `created_at`, `email`, `password_hash`, `forename`, `surname`, `phone`, `address`, `is_active`) VALUES
 	(1, '2021-05-31 21:53:34', 'stefan@singidunum.ac.rs', '$2b$11$jiMHGZoOjXfc2hLMzRLvTeEo.LgDjAIVNpC0tEA4v5lzNELyjlMoi', 'Stefan', 'Lazarevic', '+381113093265', 'Danijelova 32, 11010 Beograd, Srbija', 1),
